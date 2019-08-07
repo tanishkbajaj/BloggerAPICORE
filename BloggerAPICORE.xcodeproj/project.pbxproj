@@ -13,6 +13,10 @@
 		4941FBB622FA72C500EFCD7B /* BloggerAPICORE.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4941FBB422FA72C500EFCD7B /* BloggerAPICORE.xcdatamodeld */; };
 		4941FBB822FA72C700EFCD7B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4941FBB722FA72C700EFCD7B /* Assets.xcassets */; };
 		4941FBBB22FA72C700EFCD7B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4941FBB922FA72C700EFCD7B /* LaunchScreen.storyboard */; };
+		4941FBC322FA76A500EFCD7B /* BloggerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4941FBC222FA76A500EFCD7B /* BloggerTableViewController.swift */; };
+		4941FBC522FA76DB00EFCD7B /* BloggerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4941FBC422FA76DB00EFCD7B /* BloggerTableViewCell.swift */; };
+		4941FBC722FA981A00EFCD7B /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4941FBC622FA981A00EFCD7B /* credentials.plist */; };
+		4941FBC922FB070400EFCD7B /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4941FBC822FB070400EFCD7B /* model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		4941FBB722FA72C700EFCD7B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4941FBBA22FA72C700EFCD7B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4941FBBC22FA72C700EFCD7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4941FBC222FA76A500EFCD7B /* BloggerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloggerTableViewController.swift; sourceTree = "<group>"; };
+		4941FBC422FA76DB00EFCD7B /* BloggerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloggerTableViewCell.swift; sourceTree = "<group>"; };
+		4941FBC622FA981A00EFCD7B /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
+		4941FBC822FB070400EFCD7B /* model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +66,14 @@
 			children = (
 				4941FBAD22FA72C500EFCD7B /* AppDelegate.swift */,
 				4941FBAF22FA72C500EFCD7B /* ViewController.swift */,
+				4941FBC222FA76A500EFCD7B /* BloggerTableViewController.swift */,
+				4941FBC822FB070400EFCD7B /* model.swift */,
+				4941FBC422FA76DB00EFCD7B /* BloggerTableViewCell.swift */,
 				4941FBB122FA72C500EFCD7B /* Main.storyboard */,
 				4941FBB722FA72C700EFCD7B /* Assets.xcassets */,
 				4941FBB922FA72C700EFCD7B /* LaunchScreen.storyboard */,
 				4941FBBC22FA72C700EFCD7B /* Info.plist */,
+				4941FBC622FA981A00EFCD7B /* credentials.plist */,
 				4941FBB422FA72C500EFCD7B /* BloggerAPICORE.xcdatamodeld */,
 			);
 			path = BloggerAPICORE;
@@ -126,6 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4941FBBB22FA72C700EFCD7B /* LaunchScreen.storyboard in Resources */,
+				4941FBC722FA981A00EFCD7B /* credentials.plist in Resources */,
 				4941FBB822FA72C700EFCD7B /* Assets.xcassets in Resources */,
 				4941FBB322FA72C500EFCD7B /* Main.storyboard in Resources */,
 			);
@@ -138,8 +151,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4941FBC322FA76A500EFCD7B /* BloggerTableViewController.swift in Sources */,
+				4941FBC922FB070400EFCD7B /* model.swift in Sources */,
 				4941FBB622FA72C500EFCD7B /* BloggerAPICORE.xcdatamodeld in Sources */,
 				4941FBB022FA72C500EFCD7B /* ViewController.swift in Sources */,
+				4941FBC522FA76DB00EFCD7B /* BloggerTableViewCell.swift in Sources */,
 				4941FBAE22FA72C500EFCD7B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
