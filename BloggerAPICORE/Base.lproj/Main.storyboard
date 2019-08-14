@@ -43,7 +43,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="qhj-3G-Obv" kind="show" id="Mcc-HU-Nhz"/>
+                                    <segue destination="qhj-3G-Obv" kind="show" identifier="showSegue" id="Mcc-HU-Nhz"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -61,22 +61,24 @@
         <!--View Controller-->
         <scene sceneID="U0p-Vl-0AU">
             <objects>
-                <viewController id="qhj-3G-Obv" sceneMemberID="viewController">
+                <viewController id="qhj-3G-Obv" customClass="ViewController" customModule="BloggerAPICORE" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kCy-E7-w6s">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tfk-xQ-fto">
+                                <rect key="frame" x="20" y="186" width="374" height="643"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4uB-9l-n23">
-                                <rect key="frame" x="93" y="105" width="217" height="50"/>
+                                <rect key="frame" x="20" y="88" width="374" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Content" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFG-eN-CLT">
-                                <rect key="frame" x="93" y="379" width="217" height="181"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -84,6 +86,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="c5n-4C-AN0"/>
                     </view>
+                    <connections>
+                        <outlet property="TitleLabel" destination="4uB-9l-n23" id="7WW-sK-8zt"/>
+                        <outlet property="WebUrl" destination="Tfk-xQ-fto" id="JW0-hd-Hh1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kjQ-c2-yfn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

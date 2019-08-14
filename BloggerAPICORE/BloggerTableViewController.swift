@@ -5,16 +5,27 @@
 //  Created by IMCS2 on 8/6/19.
 //  Copyright © 2019 Tanishk. All rights reserved.
 //
-
 import UIKit
+import CoreData
+
 
 class BloggerTableViewController: UITableViewController {
+    
+    var titleArray1: [String] = []
+    var blog = [NSManagedObject]()
+    var savedDataArray: [String] = []
+    var savedUrlArray: [String] = []
+    
+    
+  
     
     var titleArray: [String] = []
     var urlArray: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -34,21 +45,30 @@ class BloggerTableViewController: UITableViewController {
                         //   print(jsonResult!["name"]!)
                         
                         let weather = jsonResult?["items"] as? NSArray
+                        DispatchQueue.main.async {
                         if let count = weather?.count {
-                        for i in 0...count-1 {
-                            let getArray = weather?[i] as? NSDictionary
-                            self.titleArray.append(getArray!["title"] as! String)
-                            self.urlArray.append(getArray!["url"] as! String)
+                            for i in 0...count-1 {
+                                let getArray = weather?[i] as? NSDictionary
+                                self.titleArray.append(getArray!["title"] as! String)
+                               // self.getArray(sender: self.titleArray)
+                                self.urlArray.append(getArray!["url"] as! String)
+                                
                             
                         }
                         }
-                        //  print(weather)
+                        
+                            //callig to save the array
+                            self.save(titleArraySave: self.titleArray, urlArraySave: self.urlArray)
+                         self.tableView.reloadData()
+                          
+                            
+                        }
+                       
                         
                         
                         
-                        
-                        print(self.titleArray)
-                        print(self.urlArray)
+//                        print(self.titleArray)
+//                        print(self.urlArray)
                         
                         
                         
@@ -62,8 +82,23 @@ class BloggerTableViewController: UITableViewController {
         }
         task.resume()
         
+        
+        
+        fetchFromCoreData()
+        
+        
     }
     
+//    func getArray(sender: [String])  {
+//
+//        titleArray1 = sender
+//      //  tableView.reloadData()
+//       // self.save(titleArraySave: titleArray1)
+//       // print(titleArray1)
+////        fetchFromCoreData()
+//
+//    }
+//
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -72,16 +107,17 @@ class BloggerTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 10
+        // using the saved data to retrieve no of rows
+        return savedDataArray.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = String(indexPath.row)
-        // Configure the cell...
+        cell.textLabel?.text = String(savedDataArray[indexPath.row])
         
+        
+       
         return cell
     }
     
@@ -91,6 +127,73 @@ class BloggerTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
+    }
+    
+    func save(titleArraySave: [String], urlArraySave: [String] ) {
+        
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+        
+        // 1
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        // 2
+        let entity =
+            NSEntityDescription.entity(forEntityName: "Blog",
+                                       in: managedContext)!
+        
+        let blogdata = NSManagedObject(entity: entity,
+                                     insertInto: managedContext)
+        
+        // 3
+        blogdata.setValue(titleArraySave, forKeyPath: "title")
+        blogdata.setValue(urlArraySave, forKeyPath: "url")
+       // person.setValue(age, forKeyPath: "age")
+        // 4
+        do {
+            try managedContext.save()
+            blog.append(blogdata)
+            print(blog)
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
+    
+    func fetchFromCoreData() {
+
+        guard let appDelegate =
+            UIApplication.shared.delegate as? AppDelegate else {
+                return
+        }
+
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+
+        //2
+        let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "Blog")
+        
+        //3
+        do {
+            blog = try managedContext.fetch(fetchRequest)
+            for blogs in blog{
+                //adding values to the saved data array
+                savedDataArray = (blogs.value(forKeyPath: "title") as? [String])!
+                savedUrlArray = (blogs.value(forKeyPath: "url") as? [String])!
+               // let age = person.value(forKeyPath: "age") as? Int
+                
+
+            }
+            print("this is saved \(savedDataArray)")
+
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+
     }
     
     
@@ -121,14 +224,21 @@ class BloggerTableViewController: UITableViewController {
      }
      */
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+    let blogSegueIdentifier = "showSegue"
+
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if  segue.identifier == blogSegueIdentifier,
+            let destination = segue.destination as? ViewController,
+            let blogIndex = tableView.indexPathForSelectedRow?.row
+        {
+            //print("this is titleArray1 \(titleArray1[blogIndex])")
+            destination.blogName = savedDataArray[blogIndex]
+            destination.trueUrl = savedUrlArray[blogIndex]
+            
+        }
+        
+    }
+
 }

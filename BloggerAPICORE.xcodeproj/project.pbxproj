@@ -17,6 +17,7 @@
 		4941FBC522FA76DB00EFCD7B /* BloggerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4941FBC422FA76DB00EFCD7B /* BloggerTableViewCell.swift */; };
 		4941FBC722FA981A00EFCD7B /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4941FBC622FA981A00EFCD7B /* credentials.plist */; };
 		4941FBC922FB070400EFCD7B /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4941FBC822FB070400EFCD7B /* model.swift */; };
+		49F1B59622FBDF420039319E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F1B59522FBDF420039319E /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		4941FBC422FA76DB00EFCD7B /* BloggerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloggerTableViewCell.swift; sourceTree = "<group>"; };
 		4941FBC622FA981A00EFCD7B /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
 		4941FBC822FB070400EFCD7B /* model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
+		49F1B59522FBDF420039319E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49F1B59622FBDF420039319E /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +53,7 @@
 			children = (
 				4941FBAC22FA72C500EFCD7B /* BloggerAPICORE */,
 				4941FBAB22FA72C500EFCD7B /* Products */,
+				49F1B59422FBDF420039319E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,6 +81,14 @@
 				4941FBB422FA72C500EFCD7B /* BloggerAPICORE.xcdatamodeld */,
 			);
 			path = BloggerAPICORE;
+			sourceTree = "<group>";
+		};
+		49F1B59422FBDF420039319E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				49F1B59522FBDF420039319E /* WebKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
